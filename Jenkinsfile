@@ -41,5 +41,8 @@ pipeline {
                 }
             }
         }
+         stage('Deploy with Ansible') {
+        // Run Ansible playbook
+        sh 'ansible-playbook /home/chiheb/ansible-projects/deploy.yaml'
     }
 }
