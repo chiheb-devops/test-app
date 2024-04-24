@@ -12,7 +12,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Checkout the repository
-                git 'https://github.com/your-username/your-repo.git'
+                git 'https://github.com/chiheb-devops/test-app.git'
             }
         }
         
