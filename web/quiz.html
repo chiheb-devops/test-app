@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to the Quiz!</h1>
+        <p>Test your knowledge:</p>
+        <form id="quiz-form">
+            <div class="question">
+                <label for="q1">Capital of Tunisia:</label><br>
+                <input type="radio" id="q1_tunis" name="q1" value="tunis">
+                <label for="q1_tunis">Tunis</label><br>
+                <input type="radio" id="q1_cairo" name="q1" value="cairo">
+                <label for="q1_cairo">Cairo</label><br>
+                <input type="radio" id="q1_paris" name="q1" value="paris">
+                <label for="q1_paris">Paris</label><br>
+            </div>
+            <div class="question">
+                <label for="q2">Capital of Egypt:</label><br>
+                <input type="radio" id="q2_tunis" name="q2" value="tunis">
+                <label for="q2_tunis">Tunis</label><br>
+                <input type="radio" id="q2_cairo" name="q2" value="cairo">
+                <label for="q2_cairo">Cairo</label><br>
+                <input type="radio" id="q2_paris" name="q2" value="paris">
+                <label for="q2_paris">Paris</label><br>
+            </div>
+            <div class="question">
+                <label for="q3">Capital of France:</label><br>
+                <input type="radio" id="q3_tunis" name="q3" value="tunis">
+                <label for="q3_tunis">Tunis</label><br>
+                <input type="radio" id="q3_cairo" name="q3" value="cairo">
+                <label for="q3_cairo">Cairo</label><br>
+                <input type="radio" id="q3_paris" name="q3" value="paris">
+                <label for="q3_paris">Paris</label><br>
+            </div>
+            <button type="button" id="submit-btn">Submit</button>
+        </form>
+        <div id="result"></div>
+    </div>
+
+    <script>
+    document.getElementById('submit-btn').addEventListener('click', function() {
+    var q1Answer = document.querySelector('input[name="q1"]:checked').value;
+    var q2Answer = document.querySelector('input[name="q2"]:checked').value;
+    var q3Answer = document.querySelector('input[name="q3"]:checked').value;
+
+    var correctAnswers = ["tunis", "cairo", "paris"];
+    var userAnswers = [q1Answer, q2Answer, q3Answer];
+    var score = 0;
+
+    for (var i = 0; i < correctAnswers.length; i++) {
+        if (userAnswers[i] === correctAnswers[i]) {
+            score++;
+        }
+    }
+
+    var resultDiv = document.getElementById('result');
+    resultDiv.innerHTML = "You scored " + score + " out of " + correctAnswers.length;
+});
+
+    </script>
+</body>
+</html>
+
