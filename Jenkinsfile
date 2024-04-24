@@ -1,20 +1,44 @@
 pipeline {
     agent any
-
+    
+    environment {
+        // Define environment variables
+        APP_NAME = 'myquiz-app'
+        DOCKERFILE_PATH = 'Dockerfile'
+        QUAY_REPO = 'quizz'
+    }
+    
     stages {
-        stage('Build') {
+        stage('Checkout') {
             steps {
-                echo 'Building..'
+                // Checkout the repository
+                git 'https://github.com/your-username/your-repo.git'
             }
         }
-        stage('Test') {
+        
+        stage('Build Image') {
             steps {
-                echo 'Testing..'
+                script {
+                    // Build the Docker image using Podman
+                    sh "podman build -f ${DOCKERFILE_PATH} -t ${APP_NAME} ."
+                }
             }
         }
-        stage('Deploy') {
+        
+        stage('Push to Quay.io') {
             steps {
-                echo 'Deploying....'
+                script {
+                    // Log in to Quay.io
+                    withCredentials([usernamePassword(credentialsId: 'quay-credential', usernameVariable: 'QUAY_USERNAME', passwordVariable: 'QUAY_PASSWORD')]) {
+                        sh "podman login -u ${QUAY_USERNAME} -p ${QUAY_PASSWORD} quay.io"
+                    }
+                    
+                    // Tag the image for Quay.io
+                    sh "podman tag ${APP_NAME} quay.io/${QUAY_REPO}/${APP_NAME}"
+                    
+                    // Push the image to Quay.io
+                    sh "podman push quay.io/${QUAY_REPO}/${APP_NAME}"
+                }
             }
         }
     }
