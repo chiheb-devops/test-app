@@ -14,7 +14,7 @@ pipeline {
             // Checkout your source code
             checkout scm
         }
-            }
+            
 
         
         stage('Build Image') {
