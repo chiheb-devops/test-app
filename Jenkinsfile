@@ -11,8 +11,10 @@ pipeline {
     stages {
         
         stage('Checkout') {
-            // Checkout your source code
-            checkout scm
+           steps {
+                
+                    echo  "stage 0 done"
+                }
         }
             
 
@@ -20,7 +22,7 @@ pipeline {
         stage('Build Image') {
             steps {
                 
-                    echo  "stage done"
+                    echo  "stage 01 done"
                 }
             }
         
