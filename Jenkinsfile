@@ -10,8 +10,6 @@ pipeline {
     
     stages {
         
-            
-                 stages {
         stage('Checkout') {
             // Checkout your source code
             checkout scm
