@@ -49,3 +49,4 @@ pipeline {
         sh 'ansible-playbook /home/chiheb/ansible-projects/deploy.yaml'
     }
 }
+    }
