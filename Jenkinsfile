@@ -10,11 +10,14 @@ pipeline {
     
     stages {
         stage('Checkout') {
-            steps {
-                // Checkout the repository
-                git 'https://github.com/chiheb-devops/test-app.git'
-            }
+            
+                 stages {
+        stage('Checkout') {
+            // Checkout your source code
+            checkout scm
         }
+            }
+
         
         stage('Build Image') {
             steps {
