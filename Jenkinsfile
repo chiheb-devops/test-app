@@ -36,9 +36,7 @@ pipeline {
                 }
             }
         
-         stage('Deploy with Ansible') {
-        // Run Ansible playbook
-        echo  "stage4 done"
+      
     }
 }
     }
