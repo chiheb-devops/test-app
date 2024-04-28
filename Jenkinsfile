@@ -20,7 +20,7 @@ pipeline {
             steps {
                 script {
                     // Build the Docker image using Podman
-                    sh "podman build -f ${DOCKERFILE_PATH} -t ${APP_NAME} ."
+                    sh "podman build -t ${APP_NAME} . "
                 }
             }
         }
