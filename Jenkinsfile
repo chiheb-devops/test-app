@@ -14,7 +14,8 @@ pipeline {
                 // Run Ansible playbook
                 ansiblePlaybook(
                     playbook: '/home/chiheb/myApp/automate-deployment.yaml',
-                    inventory: 'localhost'
+                    inventory: 'localhost',
+                    credentialsId: 'ansible-cred'
                     
                 )
             }
