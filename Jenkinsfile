@@ -1,45 +1,28 @@
 pipeline {
     agent any
-    
-    environment {
-        // Define environment variables
-        APP_NAME = 'myquiz-app'
-        DOCKERFILE_PATH = 'Dockerfile'
-        QUAY_REPO = 'quizz'
-    }
-    
+
     stages {
-        
         stage('Checkout') {
-           steps {
-                
-                    echo  "stage 0 done"
-                }
+            steps {
+                // Checkout the source code from GitHub
+                git 'https://github.com/chiheb-devops/test-app.git'
+            }
         }
-            
-
         
-        stage('Build Image') {
+        stage('Run Ansible Playbook') {
             steps {
-                
-                    echo  "stage 01 done"
-                }
+                // Run Ansible playbook
+                ansiblePlaybook(
+                    playbook: '/home/chiheb/myApp/automate-deployment.yaml',
+                    inventory: 'localhost'
+                    
+                )
             }
-        
-        
-        stage('Push to Quay.io') {
-            steps {
-               
-                    // Log in to Quay.io
-                     echo  "stage 2  done"
-                    
-                    
-                    
-                }
-            }
-        
-      
+        }
     }
 
+    triggers {
+        // Trigger the pipeline whenever there's a commit to GitHub
+        githubPush()
     }
-
+}
