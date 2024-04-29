@@ -19,7 +19,7 @@ pipeline {
             steps {
                 // Run Ansible playbook
                 ansiblePlaybook(
-                    playbook: '/home/chiheb/myApp/test.yaml',
+                    playbook: '/var/lib/jenkins/workspace/my-pipeline/test.yaml',
                     inventory: 'localhost',
                     credentialsId: 'ansible-cred'
                     
