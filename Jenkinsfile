@@ -8,6 +8,12 @@ pipeline {
                 git 'https://github.com/chiheb-devops/test-app.git'
             }
         }
+
+            stage('Print Workspace') {
+            steps {
+                sh 'echo "Workspace: ${WORKSPACE}"'
+            }
+        }
         
         stage('Run Ansible Playbook') {
             steps {
