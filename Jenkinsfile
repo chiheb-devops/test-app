@@ -11,7 +11,7 @@ pipeline {
 
             stage('Print Workspace') {
             steps {
-                sh 'echo "Workspace: ${WORKSPACE}"'
+                sh 'cd /home/chiheb/myApp'
             }
         }
         
