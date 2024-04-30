@@ -9,7 +9,12 @@ pipeline {
             }
         }
 
-           
+                   stage('gh') {
+            steps {
+                // Checkout the source code from GitHub
+                echo ' $ workdir'
+            }
+        }
         
         stage('Run Ansible Playbook') {
             steps {
