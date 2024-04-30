@@ -12,7 +12,7 @@ pipeline {
                    stage('gh') {
             steps {
                 // Checkout the source code from GitHub
-                sh 'id'
+                sh 'pwd'
             }
         }
         
