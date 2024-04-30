@@ -9,11 +9,7 @@ pipeline {
             }
         }
 
-            stage('Print Workspace') {
-            steps {
-                sh 'cd /home/chiheb/myApp'
-            }
-        }
+           
         
         stage('Run Ansible Playbook') {
             steps {
