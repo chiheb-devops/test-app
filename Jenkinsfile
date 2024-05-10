@@ -9,7 +9,7 @@ pipeline {
             }
         }
 
-                   stage('gh') {
+                   stage('where') {
             steps {
                 // Checkout the source code from GitHub
                 sh 'pwd'
