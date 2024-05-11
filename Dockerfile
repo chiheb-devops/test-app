@@ -6,7 +6,7 @@ FROM docker.io/nginx:alpine
 COPY ./web /usr/share/nginx/html
 
 # Expose port 80 to the outside world
-EXPOSE 8080
+EXPOSE 8000
 
 # Command to run the web server
 CMD ["nginx", "-g", "daemon off;"]
