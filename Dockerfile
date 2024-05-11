@@ -3,7 +3,7 @@
 FROM docker.io/nginx:alpine
 
 # Copy HTML and CSS files to the Nginx default public directory
-COPY ./html /usr/share/nginx/html
+COPY ./web /usr/share/nginx/html
 
 # Expose port 80 to the outside world
 EXPOSE 8080
