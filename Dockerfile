@@ -1,11 +1,6 @@
+FROM docker.io/httpd:latest
 
+COPY index.html /usr/local/apache2/htdocs
 
-FROM docker.io/nginx:alpine
+EXPOSE 8080
 
-
-COPY ./html /usr/share/nginx/html
-
-
-EXPOSE 8010
-
-CMD ["nginx", "-g", "daemon off;"]
