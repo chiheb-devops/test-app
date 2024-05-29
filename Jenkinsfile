@@ -9,22 +9,10 @@ pipeline {
             }
         }
 
-                   stage('where') {
+                   stage('build') {
             steps {
                 // Checkout the source code from GitHub
-                sh 'pwd'
-            }
-        }
-            stage('clone code') {
-            steps {
-                sh 'git clone  https://github.com/chiheb-devops/test-app.git '
-            }
-        }
-
-        stage('Build Image with Podman') {
-            steps {
-                sh ' cd test-app'
-                sh 'podman build -t quay.io/med_chiheb/pfe:pfe-app .'
+                sh 'podman build -t front ~/application-gestion/frontend'
             }
         }
         stage('Push Image to Quay.io') {
@@ -34,7 +22,7 @@ pipeline {
                     def password = credentialsId('quay-io-credentials-id', 'password') 
                     withCredentials([usernamePassword(credentialsId: 'quay-io-credentials-id', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                         sh "podman login -u $USERNAME -p $PASSWORD quay.io"
-                        sh 'podman push quay.io/med_chiheb/pfe:pfe-app'
+                        sh 'podman push quay.io/font:pfe'
                     }
                 }
             }
