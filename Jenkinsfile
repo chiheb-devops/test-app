@@ -12,7 +12,8 @@ pipeline {
                    stage('build') {
             steps {
                 // Checkout the source code from GitHub
-                sh 'podman build -t front ~/application-gestion/frontend'
+                sh 'cd ~/test-app'
+                sh 'podman build -t front .'
             }
         }
         stage('Push Image to Quay.io') {
