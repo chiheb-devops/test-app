@@ -1,6 +1,15 @@
-FROM docker.io/httpd:latest
+FROM node:12.11.1
 
-COPY index.html /usr/local/apache2/htdocs
+WORKDIR /app
 
-EXPOSE 8080
+COPY ./package*.json ./
 
+RUN npm install
+
+COPY /frontEnd ./
+
+RUN npm run build
+
+EXPOSE 4200
+
+CMD ["npm", "start"]
